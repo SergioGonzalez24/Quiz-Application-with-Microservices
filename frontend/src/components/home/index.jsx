@@ -1,3 +1,3 @@
-import tittle from "./tittle"
+import title from "./title"
 import slideBar from "./slideBar"
-export { tittle, slideBar }
+export { title, slideBar }

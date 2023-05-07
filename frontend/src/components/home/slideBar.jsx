@@ -15,6 +15,14 @@ export default function SlideBar() {
 
   return (
     <div className="w-1/2 mx-auto">
+      <div className="text-center">
+        <button
+          className="bg-purple-200 hover:bg-purple-300 text-purple-700 hover:text-white font-bold py-2 px-4 rounded mt-4"
+          onClick={handleSubmit}
+        >
+          Go to other page
+        </button>
+      </div>
       <input
         className="appearance-none w-full h-2 rounded-full bg-gray-300 outline-none"
         type="range"
@@ -29,12 +37,6 @@ export default function SlideBar() {
         <span>10</span>
       </div>
       <p className="text-center text-2xl font-bold mt-4">{value}</p>
-      <button
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
-        onClick={handleSubmit}
-      >
-        Go to other page
-      </button>
     </div>
   );
 }

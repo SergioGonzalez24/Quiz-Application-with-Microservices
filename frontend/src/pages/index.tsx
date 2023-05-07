@@ -1,9 +1,9 @@
-import { tittle, slideBar } from '@/components/home'
+import { title, slideBar } from '@/components/home'
 
 export default function Home() {
   return (
     <>
-    { tittle() }
+    { title() }
     <br />
     { slideBar() }
     </>
