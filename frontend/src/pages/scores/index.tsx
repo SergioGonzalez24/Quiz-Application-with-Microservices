@@ -1,5 +1,12 @@
+import { LastGame, Tittle, TableScores} from '@/components/scores/'
+
 export default function scores() {
     return(
-        <h1>Scores</h1>
+        <>
+        <Tittle />
+        <LastGame />
+        < TableScores />
+        </>
+
     )
 }
