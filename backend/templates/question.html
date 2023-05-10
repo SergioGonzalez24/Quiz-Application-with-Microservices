@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quiz</title>
+  </head>
+  <body>
+    <h1>{{ question.question }}</h1>
+    <form method="POST" action="{{ url_for('blueprint.show_question_result') }}">
+      {% for choice in possible_answers %}
+        <input type="radio" name="answer" value="{{ choice.answer }}">
+        <label>{{ choice.answer }}</label><br>
+      {% endfor %}
+      <input type="hidden" name="question_id" value="{{ question.id }}">
+      <button type="submit">Submit Answer</button>
+    </form>
+  </body>
+</html>
