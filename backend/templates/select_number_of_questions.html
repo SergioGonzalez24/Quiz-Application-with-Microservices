@@ -78,7 +78,7 @@
 	<p>Please select the number of questions you would like to answer:</p>
 	<div id="slider" class="slider"></div>
 	<div class="display">Current value: <span id="display"></span></div>
-	<form action="{{ url_for('blueprint.show_number_of_questions') }}" method="POST">
+	<form action="{{ url_for('blueprint.show_question') }}" method="POST">
 		<input type="hidden" name="num_questions" value="1" id="num_questions">
 		<button type="submit">Start Quiz</button>
 	</form>

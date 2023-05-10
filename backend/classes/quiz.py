@@ -8,14 +8,19 @@ class Quiz:
         self.question_index += 1
         return self.questions[self.question_index]
 
+    def get_question_index(self):
+        return self.question_index + 1
+
+    def get_num_questions(self):
+        return len(self.questions)
+
     def is_finished(self):
         return self.question_index == len(self.questions)
 
     def check_answer(self, answer):
-        question = self.get_question()
+        question = self.questions[self.question_index]
 
-        if question.check_answer(answer):
+        if question.get_correct_answer() == answer:
             self.score += 1
 
-        self.question_index += 1
-        return question.check_answer(answer)
+        return question.get_correct_answer() == answer
