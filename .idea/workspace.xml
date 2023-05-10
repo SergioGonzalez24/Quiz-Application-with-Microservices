@@ -20,10 +20,11 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "Sergio",
-    "last_opened_file_path": "/Users/sergiogonzalez/Documents/GitHub/Quiz-Application-with-Microservices",
+    "last_opened_file_path": "C:/Users/rodrimen/Documents/GitHub/Quiz-Application-with-Microservices/backend",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -37,6 +38,7 @@
       <updated>1683071216386</updated>
       <workItem from="1683071217720" duration="152000" />
       <workItem from="1683430982328" duration="4000" />
+      <workItem from="1683708789702" duration="14000" />
     </task>
     <servers />
   </component>
