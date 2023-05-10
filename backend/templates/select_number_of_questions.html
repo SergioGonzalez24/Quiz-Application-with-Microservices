@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Select Number of Questions</title>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<style type="text/css">
+		body {
+			font-family: Arial, sans-serif;
+			font-size: 16px;
+			padding: 20px;
+		}
+
+		h1 {
+			margin-top: 0;
+		}
+
+		p {
+			margin-bottom: 30px;
+		}
+
+		.slider {
+			margin-bottom: 30px;
+			width: 100%;
+		}
+
+		.display {
+			font-size: 24px;
+			margin-bottom: 10px;
+			text-align: center;
+		}
+
+		button {
+			background-color: #4CAF50;
+			border: none;
+			color: white;
+			padding: 12px 24px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin-top: 30px;
+			cursor: pointer;
+			border-radius: 5px;
+			transition: background-color 0.3s ease;
+		}
+
+		button:hover {
+			background-color: #3e8e41;
+		}
+	</style>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			// Set up the slider
+			$("#slider").slider({
+				value: 1,
+				min: 1,
+				max: 10,
+				step: 1,
+				slide: function(event, ui) {
+					// Update the display with the current value
+					$("#display").text(ui.value);
+
+					// Update the value of the hidden input field
+					$("#num_questions").val(ui.value);
+				}
+			});
+			// Set the initial display value
+			$("#display").text($("#slider").slider("value"));
+			// Set the initial value of the hidden input field
+			$("#num_questions").val($("#slider").slider("value"));
+		});
+	</script>
+</head>
+<body>
+	<h1>Select Number of Questions</h1>
+	<p>Please select the number of questions you would like to answer:</p>
+	<div id="slider" class="slider"></div>
+	<div class="display">Current value: <span id="display"></span></div>
+	<form action="{{ url_for('blueprint.show_number_of_questions') }}" method="POST">
+		<input type="hidden" name="num_questions" value="1" id="num_questions">
+		<button type="submit">Start Quiz</button>
+	</form>
+</body>
+</html>
