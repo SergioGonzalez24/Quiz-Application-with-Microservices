@@ -57,7 +57,11 @@
     {% else %}
       <h1 class="incorrect">Incorrect :(</h1>
     {% endif %}
-    <p>The correct answer was "{{ correct_answer.answer }}".</p>
-    <a href="{{ url_for('blueprint.show_question')}}">Go back to question</a>
+    <p>The correct answer was "{{ correct_answer }}".</p>
+    {% if last_question %}
+    <a href="{{ url_for('blueprint.show_score')}}">See score</a>
+    {% else %}
+    <a href="{{ url_for('blueprint.show_question')}}">Next question</a>
+    {% endif %}
   </body>
 </html>
