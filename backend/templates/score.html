@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Quiz Score</title>
+	<style type="text/css">
+		body {
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			padding: 20px;
+		}
+
+		h1 {
+			margin-top: 0;
+		}
+
+		.form-group {
+			margin-bottom: 20px;
+		}
+
+		label {
+			display: block;
+			margin-bottom: 5px;
+		}
+
+		input[type="text"] {
+			display: block;
+			width: 100%;
+			padding: 10px;
+			font-size: 16px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			box-sizing: border-box;
+			margin-top: 5px;
+		}
+
+		button[type="submit"] {
+			background-color: #4CAF50;
+			border: none;
+			color: white;
+			padding: 12px 24px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin-top: 30px;
+			cursor: pointer;
+			border-radius: 5px;
+			transition: background-color 0.3s ease;
+		}
+
+		button[type="submit"]:hover {
+			background-color: #3e8e41;
+		}
+
+		.score {
+			font-size: 24px;
+			margin-bottom: 20px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<h1>Quiz Score</h1>
+	<div class="score">Your score is: <span id="score">{{ score }}</span></div>
+	<form action="" method="post">
+		<div class="form-group">
+			<label for="initials">Enter your initials:</label>
+			<input type="text" id="initials" name="initials" placeholder="e.g. J.S." required>
+		</div>
+		<button type="submit">Submit</button>
+	</form>
+</body>
+</html>

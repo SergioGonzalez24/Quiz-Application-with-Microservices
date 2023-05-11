@@ -6,6 +6,9 @@ from classes.question import Question
 import random
 
 
+
+
+
 class Quizcontroller:
 
     def __init__(self):
@@ -38,12 +41,16 @@ class Quizcontroller:
             print(e)
             return '==================TABLES NOT CREATED!!!=================='"""
 
-    def show_question_result(self):
-        question_id = request.form['question_id']
-        correct_answer = quizmodel.QuestionAnswers.query.filter_by(question_id=question_id, is_correct=1).first()
-        user_answer = request.form['answer']
+    def select_number_of_questions(self):
+        return quizview.select_number_of_questions()
 
-        return quizview.is_correct_question(correct_answer, user_answer)
+    def show_question_result(self):
+        user_answer = request.form['answer']
+        is_correct = self.quiz.check_answer(user_answer)
+        correct_answer = self.quiz.get_question().get_correct_answer()
+        self.quiz.elevate_question_index()
+
+        return quizview.show_question_result(is_correct, correct_answer, self.quiz.is_last_question())
 
     def show_question(self):
         if self.quiz is None:
@@ -51,14 +58,11 @@ class Quizcontroller:
             self.initialize_quiz()
         question = self.quiz.get_question()
         possible_answers = quizmodel.QuestionAnswers.query.filter_by(question_id=question.get_question_id()).all()
-        return quizview.show_question_result(question, possible_answers, self.quiz)
+        return quizview.show_question(question, possible_answers, self.quiz)
 
-    def select_number_of_questions(self):
-        return quizview.select_number_of_questions()
-
-    def show_number_of_questions(self):
+    """def show_number_of_questions(self):
         self.num_questions = request.form['num_questions']
-        return quizview.show_number_of_questions(self.num_questions)
+        return quizview.show_number_of_questions(self.num_questions)"""
 
     def initialize_quiz(self):
         # a list of 10 random questions
@@ -77,6 +81,9 @@ class Quizcontroller:
             question = Question(question_id, question.question, right_answer.answer, wrong_answers_list)
             question_list.append(question)
         self.quiz = Quiz(question_list)
+
+    def show_score(self):
+        return quizview.show_score(self.quiz.score)
 
     def test_page(self):
         self.num_questions = 10

@@ -55,7 +55,7 @@
       </style>
   </head>
   <body>
-    <h1>Question: {{ quiz.get_question_index() }} / {{ quiz.get_num_questions() }}</h1>
+    <h1>Question: {{ quiz.get_question_number() }} / {{ quiz.get_num_questions() }}</h1>
     <h1>{{ question.question }}</h1>
     <form method="POST" action="{{ url_for('blueprint.show_question_result') }}">
       {% for choice in possible_answers %}
