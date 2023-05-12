@@ -6,9 +6,6 @@ from classes.question import Question
 import random
 
 
-
-
-
 class Quizcontroller:
 
     def __init__(self):
@@ -42,6 +39,8 @@ class Quizcontroller:
             return '==================TABLES NOT CREATED!!!=================='"""
 
     def select_number_of_questions(self):
+        if request.method == 'POST':
+            self.quiz = None
         return quizview.select_number_of_questions()
 
     def show_question_result(self):
@@ -65,7 +64,7 @@ class Quizcontroller:
         return quizview.show_number_of_questions(self.num_questions)"""
 
     def initialize_quiz(self):
-        # a list of 10 random questions
+        # a list of x random questions
         lowest_id = quizmodel.Question.query.order_by(quizmodel.Question.id).first().id
         highest_id = quizmodel.Question.query.order_by(quizmodel.Question.id.desc()).first().id
         random_ids = random.sample(range(lowest_id, highest_id+1), self.num_questions)
@@ -85,7 +84,7 @@ class Quizcontroller:
     def show_score(self):
         return quizview.show_score(self.quiz.score)
 
-    def test_page(self):
+    """def test_page(self):
         self.num_questions = 10
         self.initialize_quiz()
         pretty_quiz_questions = []
@@ -98,5 +97,20 @@ class Quizcontroller:
             pretty_quiz_questions.append(pretty_question)
 
         print(pretty_quiz_questions)
-        return pretty_quiz_questions
+        return pretty_quiz_questions"""
 
+    def show_high_scores(self):
+        scores = quizmodel.Scores.query.order_by(quizmodel.Scores.score.desc()).all()
+        if request.method == 'POST':
+            initials = request.form['initials']
+            score = self.quiz.score
+            record = quizmodel.Scores(initials=initials, score=score)
+            quizmodel.db.session.add(record)
+            quizmodel.db.session.commit()
+            scores = quizmodel.Scores.query.order_by(quizmodel.Scores.score.desc()).all()
+
+        score_list = []
+        for score in scores:
+            score_list.append({'initials': score.initials, 'score': score.score})
+
+        return quizview.show_high_scores(score_list)
