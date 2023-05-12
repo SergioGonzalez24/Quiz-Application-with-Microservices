@@ -62,12 +62,13 @@
 <body>
 	<h1>Quiz Score</h1>
 	<div class="score">Your score is: <span id="score">{{ score }}</span></div>
-	<form action="" method="post">
+	<form method="POST" action="{{ url_for('blueprint.show_high_scores') }}" >
 		<div class="form-group">
 			<label for="initials">Enter your initials:</label>
 			<input type="text" id="initials" name="initials" placeholder="e.g. J.S." required>
 		</div>
 		<button type="submit">Submit</button>
 	</form>
+
 </body>
 </html>
