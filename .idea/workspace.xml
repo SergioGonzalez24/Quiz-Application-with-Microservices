@@ -25,10 +25,14 @@
     "WebServerToolWindowFactoryState": "false",
     "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "Sergio",
+<<<<<<< HEAD
     "last_opened_file_path": "/Users/sergiogonzalez/Documents/GitHub/Quiz-Application-with-Microservices",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.lookFeel",
     "ts.external.directory.path": "/Users/sergiogonzalez/Documents/GitHub/Quiz-Application-with-Microservices/frontend/node_modules/typescript/lib",
+=======
+    "last_opened_file_path": "C:/Users/rodrimen/Documents/GitHub/Quiz-Application-with-Microservices/backend",
+>>>>>>> backend-push
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -42,7 +46,11 @@
       <updated>1683071216386</updated>
       <workItem from="1683071217720" duration="152000" />
       <workItem from="1683430982328" duration="4000" />
+<<<<<<< HEAD
       <workItem from="1683506843062" duration="48000" />
+=======
+      <workItem from="1683708789702" duration="14000" />
+>>>>>>> backend-push
     </task>
     <servers />
   </component>

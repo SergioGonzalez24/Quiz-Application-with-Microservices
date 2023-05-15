@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>High Scores</title>
+	<style type="text/css">
+		body {
+			font-family: Arial, sans-serif;
+			font-size: 16px;
+			padding: 20px;
+			background-color: #f2f2f2;
+		}
+
+		h1 {
+			margin-top: 0;
+			margin-bottom: 20px;
+			text-align: center;
+			font-size: 36px;
+			color: #333;
+		}
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			border: 1px solid #ddd;
+			margin-bottom: 30px;
+		}
+
+		th, td {
+			padding: 12px;
+			text-align: left;
+			border-bottom: 1px solid #ddd;
+		}
+
+		th {
+			background-color: #f2f2f2;
+			color: #333;
+			font-weight: normal;
+		}
+
+		td {
+			background-color: #fff;
+			color: #333;
+		}
+
+        .play-again {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #fff;
+            background-color: #333;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+            margin-top: 20px;
+        }
+
+        .play-again:hover {
+            background-color: #444;
+        }
+	</style>
+</head>
+<body>
+	<h1>High Scores</h1>
+	<table>
+		<tr>
+			<th>Initials</th>
+			<th>Score</th>
+		</tr>
+		{% for score in scores %}
+		<tr>
+			<td>{{ score.initials }}</td>
+			<td>{{ score.score }}</td>
+		</tr>
+		{% endfor %}
+	</table>
+    <form method="POST" action="{{ url_for('blueprint.select_number_of_questions')}}">
+        <input class="play-again" type="submit" value="Play Again">
+    </form>
+</body>
+</html>

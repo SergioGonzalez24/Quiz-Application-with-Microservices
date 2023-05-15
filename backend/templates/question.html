@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quiz</title>
+      <style>
+          body {
+              font-family: Arial, sans-serif;
+              background-color: #f7f7f7;
+              margin: 0;
+              padding: 0;
+            }
+
+            h1 {
+              font-size: 2.5rem;
+              color: #333;
+              text-align: center;
+              margin-top: 2rem;
+            }
+
+            form {
+              max-width: 500px;
+              margin: 0 auto;
+              background-color: #fff;
+              border-radius: 5px;
+              padding: 2rem;
+              box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            }
+
+            input[type="radio"] {
+              margin-right: 1rem;
+            }
+
+            label {
+              display: inline-block;
+              margin-bottom: 1rem;
+            }
+
+            button[type="submit"] {
+              background-color: #007bff;
+              color: #fff;
+              border: none;
+              border-radius: 5px;
+              padding: 0.8rem 1.2rem;
+              font-size: 1rem;
+              cursor: pointer;
+              margin-top: 1rem;
+              display: block;
+              margin-left: auto;
+              margin-right: auto;
+            }
+
+            button[type="submit"]:hover {
+              background-color: #0062cc;
+            }
+      </style>
+  </head>
+  <body>
+    <h1>Question: {{ quiz.get_question_number() }} / {{ quiz.get_num_questions() }}</h1>
+    <h1>{{ question.question }}</h1>
+    <form method="POST" action="{{ url_for('blueprint.show_question_result') }}">
+      {% for choice in possible_answers %}
+        <input type="radio" name="answer" value="{{ choice.answer }}">
+        <label>{{ choice.answer }}</label><br>
+      {% endfor %}
+      <input type="hidden" name="question_id" value="{{ question.get_question_id() }}">
+      <button type="submit">Submit Answer</button>
+    </form>
+  </body>
+</html>

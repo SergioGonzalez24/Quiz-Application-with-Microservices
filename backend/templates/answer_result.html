@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quiz Answer Result</title>
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          background-color: #f7f7f7;
+          margin: 0;
+          padding: 0;
+        }
+
+        h1 {
+          font-size: 3rem;
+          color: #333;
+          text-align: center;
+          margin-top: 2rem;
+        }
+
+        p {
+          font-size: 1.2rem;
+          color: #333;
+          text-align: center;
+          margin-top: 1rem;
+        }
+
+        a {
+          display: block;
+          margin-top: 2rem;
+          text-align: center;
+          font-size: 1.2rem;
+          color: #007bff;
+          text-decoration: none;
+          border-bottom: 1px solid #007bff;
+          padding-bottom: 0.2rem;
+        }
+
+        a:hover {
+          color: #0062cc;
+          border-bottom: 1px solid #0062cc;
+        }
+
+        /* Styles for correct answer */
+        h1.correct {
+          color: green;
+        }
+
+        /* Styles for incorrect answer */
+        h1.incorrect {
+          color: red;
+        }
+    </style>
+  </head>
+  <body>
+    {% if is_correct %}
+      <h1 class="correct">Correct!</h1>
+    {% else %}
+      <h1 class="incorrect">Incorrect :(</h1>
+    {% endif %}
+    <p>The correct answer was "{{ correct_answer }}".</p>
+    {% if last_question %}
+    <a href="{{ url_for('blueprint.show_score')}}">See score</a>
+    {% else %}
+    <a href="{{ url_for('blueprint.show_question')}}">Next question</a>
+    {% endif %}
+  </body>
+</html>
