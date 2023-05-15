@@ -1,4 +1,4 @@
-#Pasos a seguir para poder correr la aplicación  
+# Pasos a seguir para poder correr la aplicación  
 
 Es necesario instalar los siguientes paquetes:
 ```pip install flask
