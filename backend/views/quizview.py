@@ -23,5 +23,5 @@ def show_score(score):
     return render_template('score.html', score=score)
 
 
-def show_high_scores(scores):
-    return render_template('high_scores.html', scores=scores)
+def show_high_scores(scores, user_score):
+    return render_template('high_scores.html', scores=scores, user_score=user_score)
