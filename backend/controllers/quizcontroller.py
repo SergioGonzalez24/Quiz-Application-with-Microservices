@@ -12,35 +12,8 @@ class Quizcontroller:
         self.num_questions = None
         self.quiz = None
 
-    """def index(self):
-        return 'hello'
-
-    def add_score(self):
-        try:
-            # create tables if not exists.
-            record = quizmodel.Scores(initials='hola', score=1)
-            quizmodel.db.session.add(record)
-            quizmodel.db.session.commit()
-            return '==================SCORE ADDED=================='
-
-        except Exception as e:
-            print(e)
-            return '==================SCORE NOT ADDED!!!=================='
-
-    def create_tables(self):
-        try:
-            # create tables if not exists.
-            quizmodel.db.create_all()
-            quizmodel.db.session.commit()
-            return '==================TABLES CREATED=================='
-
-        except Exception as e:
-            print(e)
-            return '==================TABLES NOT CREATED!!!=================='"""
-
     def select_number_of_questions(self):
-        if request.method == 'POST':
-            self.quiz = None
+        self.quiz = None
         return quizview.select_number_of_questions()
 
     def show_question_result(self):
@@ -59,15 +32,11 @@ class Quizcontroller:
         possible_answers = quizmodel.QuestionAnswers.query.filter_by(question_id=question.get_question_id()).all()
         return quizview.show_question(question, possible_answers, self.quiz)
 
-    """def show_number_of_questions(self):
-        self.num_questions = request.form['num_questions']
-        return quizview.show_number_of_questions(self.num_questions)"""
-
     def initialize_quiz(self):
         # a list of x random questions
         lowest_id = quizmodel.Question.query.order_by(quizmodel.Question.id).first().id
         highest_id = quizmodel.Question.query.order_by(quizmodel.Question.id.desc()).first().id
-        random_ids = random.sample(range(lowest_id, highest_id+1), self.num_questions)
+        random_ids = random.sample(range(lowest_id, highest_id + 1), self.num_questions)
         questions = quizmodel.Question.query.filter(quizmodel.Question.id.in_(random_ids)).all()
         question_list = []
         for question in questions:
@@ -84,33 +53,35 @@ class Quizcontroller:
     def show_score(self):
         return quizview.show_score(self.quiz.score)
 
-    """def test_page(self):
-        self.num_questions = 10
-        self.initialize_quiz()
-        pretty_quiz_questions = []
-        for question in self.quiz.questions:
-            pretty_question = {
-                'question': question.get_question(),
-                'right_answer': question.get_correct_answer(),
-                'wrong_answers': question.get_wrong_answers()
-            }
-            pretty_quiz_questions.append(pretty_question)
-
-        print(pretty_quiz_questions)
-        return pretty_quiz_questions"""
-
     def show_high_scores(self):
-        scores = quizmodel.Scores.query.order_by(quizmodel.Scores.score.desc()).all()
+        # scores = quizmodel.Scores.query.order_by(quizmodel.Scores.score.desc()).all()
+        user_score = None
         if request.method == 'POST':
             initials = request.form['initials']
             score = self.quiz.score
             record = quizmodel.Scores(initials=initials, score=score)
             quizmodel.db.session.add(record)
             quizmodel.db.session.commit()
-            scores = quizmodel.Scores.query.order_by(quizmodel.Scores.score.desc()).all()
+            user_score = quizmodel.Scores.query.order_by(quizmodel.Scores.id.desc()).first()
+
+        top_10_scores = quizmodel.Scores.query.order_by(quizmodel.Scores.score.desc()).limit(10).all()
+        user_score_in_top_10 = False
+        user_score_dict = None
+        if user_score is not None:
+            user_place = quizmodel.Scores.query.filter(quizmodel.Scores.score >= user_score.score, quizmodel.Scores.id <
+                                                       user_score.id).count() + 1
+            user_score_dict = {'id': user_score.id, 'place': user_place, 'initials': user_score.initials,
+                               'score': user_score.score}
+            if user_score in top_10_scores:
+                user_score_in_top_10 = True
 
         score_list = []
-        for score in scores:
-            score_list.append({'initials': score.initials, 'score': score.score})
+        counter = 0
+        for score in top_10_scores:
+            counter += 1
+            score_list.append({'id': score.id, 'place': counter, 'initials': score.initials, 'score': score.score})
+        if user_score_in_top_10 is False and user_score is not None:
+            score_list.append(
+                {'id': user_score.id, 'place': user_place, 'initials': user_score.initials, 'score': user_score.score})
 
-        return quizview.show_high_scores(score_list)
+        return quizview.show_high_scores(score_list, user_score_dict)
