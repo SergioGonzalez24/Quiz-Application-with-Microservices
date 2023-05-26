@@ -1,7 +1,7 @@
 from flask import Blueprint
-from controllers.quizcontroller import Quizcontroller
+from controllers.quizcontroller import QuizController
 
-quizcontroller = Quizcontroller()
+quizcontroller = QuizController()
 
 blueprint = Blueprint('blueprint', __name__)
 
