@@ -28,5 +28,7 @@ http://54.242.238.228/
 ![Descripción de la imagen](frontend/src/img/modelo.jpeg)
 
 ## Patterns used
+The diagram depicts the integration of various SOLID principles, including the Single Responsibility Principle (SRP), Open-Closed Principle (OCP), Liskov Substitution Principle (LSP), and Interface Segregation Principle (ISP). Each class has a unique responsibility, such as the Question class that stores the question, options, and correct answer. The classes are open to extension and closed to modification, as seen in QuizVM and QuestionVM, responsible for storing user interface-related information. The LSP is demonstrated in the Quiz and Question classes, which can be used in place of the parent class. While there is no direct implementation of the ISP or Dependency Inversion Principle (DIP), the overall design reflects the SOLID principles' adherence, ensuring modularity, reusability, and maintainability.
+
 
 ## How to run the test suite
