@@ -25,6 +25,7 @@ Must have the script **config.py** and run in a terminal:
 http://54.242.238.228/
 
 ## Diagrams of the system
+![Descripción de la imagen](frontend/src/img/modelo.jpeg)
 
 ## Patterns used
 
