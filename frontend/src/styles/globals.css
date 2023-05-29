@@ -1,7 +1,0 @@
-/* `@tailwind` is a directive used in a CSS preprocessor like PostCSS to include the Tailwind CSS
-framework. It allows developers to use Tailwind's utility classes in their CSS code. The `@tailwind
-base` directive includes the base styles, `@tailwind components` includes the pre-designed
-components, and `@tailwind utilities` includes the utility classes. */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
