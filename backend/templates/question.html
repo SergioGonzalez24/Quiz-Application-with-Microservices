@@ -8,6 +8,7 @@
               background-color: #f7f7f7;
               margin: 0;
               padding: 0;
+              
             }
 
             h1 {
@@ -15,6 +16,14 @@
               color: #333;
               text-align: center;
               margin-top: 2rem;
+            }
+
+            h2 {
+              font-size: 2rem;
+              color: #333;
+              text-align: center;
+              margin-top: 2rem;
+              font-weight: lighter;
             }
 
             form {
@@ -56,7 +65,7 @@
   </head>
   <body>
     <h1>Question: {{ quiz.get_question_number() }} / {{ quiz.get_num_questions() }}</h1>
-    <h1>{{ question.question }}</h1>
+    <h2>{{ question.question }}</h2>
     <form method="POST" action="{{ url_for('blueprint.show_question_result') }}">
       {% for choice in possible_answers %}
         <input type="radio" name="answer" value="{{ choice.answer }}">
