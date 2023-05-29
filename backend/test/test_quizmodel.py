@@ -1,7 +1,6 @@
-# tests/test_quizmodel.py
-
 from app import create_app, db
-from quizmodel import Question, QuestionAnswers, Scores
+from models.quizmodel import Question, QuestionAnswers, Scores
+
 
 def test_question_model():
     # Create a question

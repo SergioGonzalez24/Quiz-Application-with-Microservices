@@ -1,6 +1,15 @@
 import pytest
-from question import Question
+from classes.question import Question
 
+
+"""
+This is a test module for the Question class, which tests various methods of the class using a
+sample question.
+
+:param sample_question: This is a pytest fixture that returns an instance of the Question class with
+the following parameters:
+"""
+    
 @pytest.fixture
 def sample_question():
     return Question(1, "What is the capital of France?", "Paris", ["London", "Berlin", "Madrid"])

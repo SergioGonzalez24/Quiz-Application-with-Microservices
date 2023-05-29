@@ -1,5 +1,14 @@
 import pytest
-from quiz import Quiz
+from classes.quiz import Quiz
+
+"""
+This is a test suite for a Quiz class that tests various methods such as get_question,
+elevate_question_index, get_question_number, get_num_questions, is_finished, and is_last_question.
+
+:param quiz: The `quiz` fixture is a function that returns an instance of the `Quiz` class, which
+takes a list of questions as an argument. The questions are defined within the fixture. The fixture
+is used in each of the test functions to create an instance of the `Quiz` class to test its
+"""
 
 @pytest.fixture
 def quiz():

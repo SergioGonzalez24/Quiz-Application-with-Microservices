@@ -1,6 +1,7 @@
 {
     "python.analysis.extraPaths": [
-        "./backend/models"
+        "./backend/models",
+        "./backend/classes"
     ],
     "workbench.colorCustomizations": {
         "activityBar.activeBackground": "#2f7c47",
