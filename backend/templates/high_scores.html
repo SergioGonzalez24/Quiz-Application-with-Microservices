@@ -8,6 +8,9 @@
 			font-size: 16px;
 			padding: 20px;
 			background-color: #f2f2f2;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
 		}
 
 		h1 {
@@ -42,57 +45,58 @@
 			color: #333;
 		}
 
-        .play-again {
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 18px;
-            font-weight: bold;
-            text-decoration: none;
-            color: #fff;
-            background-color: #333;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease-in-out;
-            margin-top: 20px;
-        }
+		.play-again {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			padding: 10px 20px;
+			font-size: 24px;
+			font-weight: bold;
+			text-decoration: none;
+			color: #fff;
+			background-color: #F1C40F;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			transition: background-color 0.3s ease-in-out;
+			margin-top: 20px;
+		}
 
-        .play-again:hover {
-            background-color: #444;
-        }
+		.play-again:hover {
+			background-color: #444;
+		}
 
-        #user-score {
-            background-color: #007bff !important;
-        }
+		#user-score {
+			background-color: #007bff !important;
+		}
 	</style>
 </head>
 <body>
 	<h1>High Scores</h1>
 	<table>
 		<tr>
-            <th>Place</th>
+			<th>Place</th>
 			<th>Initials</th>
 			<th>Score</th>
 		</tr>
 		{% for score in scores %}
-        {% if score.id == user_score.id %}
-		<tr id="user-score">
-            <td id="user-score">{{ score.place }}</td>
-			<td id="user-score">{{ score.initials }}</td>
-			<td id="user-score">{{ score.score }}</td>
-		</tr>
-        {% else %}
-        <tr>
-            <td>{{ score.place }}</td>
-            <td>{{ score.initials }}</td>
-            <td>{{ score.score }}</td>
-        </tr>
-        {% endif %}
-
+			{% if score.id == user_score.id %}
+				<tr id="user-score">
+					<td id="user-score">{{ score.place }}</td>
+					<td id="user-score">{{ score.initials }}</td>
+					<td id="user-score">{{ score.score }}</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td>{{ score.place }}</td>
+					<td>{{ score.initials }}</td>
+					<td>{{ score.score }}</td>
+				</tr>
+			{% endif %}
 		{% endfor %}
 	</table>
-    <form method="POST" action="{{ url_for('blueprint.select_number_of_questions')}}">
-        <input class="play-again" type="submit" value="Play Again">
-    </form>
+	<form method="POST" action="{{ url_for('blueprint.select_number_of_questions') }}">
+		<input class="play-again" type="submit" value="Play Again">
+	</form>
 </body>
 </html>
