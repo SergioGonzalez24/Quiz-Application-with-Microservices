@@ -1,4 +1,5 @@
 class Quiz:
+    # Class to represent a quiz with getters
     def __init__(self, questions):
         self.questions = questions
         self.score = 0

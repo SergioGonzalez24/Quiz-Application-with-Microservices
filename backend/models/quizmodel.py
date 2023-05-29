@@ -7,7 +7,7 @@ db = SQLAlchemy()
 
 
 class Question(db.Model):
-
+    # a question in the database
     __tablename__ = 'question'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     question = db.Column(db.String(255), nullable=False)
@@ -19,7 +19,7 @@ class Question(db.Model):
 
 
 class QuestionAnswers(db.Model):
-
+    # all the possible answers for a question, one of which is correct
     __tablename__ = 'question_answers'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     question_id = db.Column(db.Integer, db.ForeignKey('question.id'), nullable=False)
@@ -31,7 +31,7 @@ class QuestionAnswers(db.Model):
 
 
 class Scores(db.Model):
-
+    # the scores of the users
     __tablename__ = 'scores'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     initials = db.Column(db.String(255), nullable=False)
