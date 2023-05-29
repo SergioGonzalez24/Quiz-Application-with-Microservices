@@ -1,6 +1,12 @@
 # test_quizmodel.py
+"""
+This is a test file for the quizmodel module, which tests the creation and representation of a
+Question object using pytest fixtures.
 
-# test_quizmodel.py
+:param new_question: This is a pytest fixture that creates a new instance of the Question model and
+adds it to the in-memory SQLite database for testing. The fixture yields the created question object
+for use in the tests, and then deletes it from the database after the tests are complete
+"""
 
 import pytest
 from app import create_app, db

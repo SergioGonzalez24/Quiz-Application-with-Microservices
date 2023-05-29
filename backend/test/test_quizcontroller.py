@@ -1,7 +1,10 @@
+# The TestQuizcontroller class contains unit tests for the Quizcontroller class.
 from classes.question import Question
 from controllers.quizcontroller import Quizcontroller
 from classes.quiz import Quiz
 
+# The TestQuizcontroller class contains unit tests for the select_number_of_questions and show_score
+# methods of the Quizcontroller class.
 
 class TestQuizcontroller:
     
