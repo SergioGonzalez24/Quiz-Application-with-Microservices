@@ -26,7 +26,7 @@ def is_user_top_10(user_score):
     user_score_dict = None
     if user_score is not None:
         user_place = quizmodel.Scores.query.filter(quizmodel.Scores.score >= user_score.score, quizmodel.Scores.id <
-                                                   user_score.id).count() + 1
+                                                   user_score.id).count()
         user_score_dict = {'id': user_score.id, 'place': user_place, 'initials': user_score.initials,
                            'score': user_score.score}
         if user_score in top_10_scores:
@@ -79,8 +79,8 @@ class QuizController:
         # method to be used in the quiz view to show the high scores
         user_score = None
         if request.method == 'POST':
-            user_score = quizmodel.Scores.query.order_by(quizmodel.Scores.id.desc()).first()
             self._add_score_to_db()
+            user_score = quizmodel.Scores.query.order_by(quizmodel.Scores.id.desc()).first()
 
         top_10_scores, user_place, user_score_dict, user_score_in_top_10 = is_user_top_10(user_score)
 
