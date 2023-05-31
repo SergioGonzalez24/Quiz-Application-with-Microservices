@@ -28,6 +28,8 @@ http://54.242.238.228/
 ![Descripción de la imagen](backend/img/modelo.jpeg)
 ![Swim Lane Diagram](backend/img/SwimlaneDiagram.drawio.png)
 
-## Patterns used
+## Design pattern used
 In the development of Quiz App, we chose to use the MVC (Model-View-Controller) design pattern. This allowed us to clearly separate the different parts of the application and assign specific responsibilities to each one. MVC helped us organize and structure the code efficiently, facilitating maintenance, reusability, and scalability. Additionally, it provided us with the flexibility to make independent changes in each component. In summary, MVC was the right choice for building a robust and adaptable application.
 
+## Architecture diagram
+![Descripción de la imagen](backend/img/architecture.png)
