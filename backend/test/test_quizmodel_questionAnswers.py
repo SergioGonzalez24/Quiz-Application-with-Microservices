@@ -20,6 +20,14 @@ Fields:
 class TestQuestionAnswers:
     # Tests that a QuestionAnswers object can be created with valid inputs.
     def test_create_question_answers_valid_input(self, mocker):
+        """
+        The function tests if a valid input for creating a question answer object returns the expected
+        string representation.
+        
+        :param mocker: mocker is a library used for mocking in Python unit tests. It allows you to replace
+        parts of your code with mock objects, which can be useful for isolating and testing specific parts
+        of your code
+        """
         # Arrange
         question_mock = mocker.Mock()
         question_mock.id = 1

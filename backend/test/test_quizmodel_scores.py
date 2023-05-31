@@ -20,6 +20,9 @@ class TestScores:
     # Tests that a Scores object can be created with valid initials and score values.
     def test_create_scores_object(self):
         """
+        This function tests if a Scores object can be created with valid initials and score values.
+        """
+        """
         Shiver me timbers! Let's test if we can create a Scores object with valid initials and score values.
         """
         # Arrange
